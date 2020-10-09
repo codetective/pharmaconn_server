@@ -17,5 +17,5 @@ const connectDB = async () => {
       process.exit(1)
     });
 };
-console.log(mongoose.connection.dropDatabase('pharmaconn'))
+// console.log(mongoose.connection.dropDatabase('pharmaconn'))
 module.exports = connectDB;
