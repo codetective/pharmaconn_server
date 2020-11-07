@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const db = require("./config/keys").mongoURI
+const db = require("./config/keys").mongoURI;
 
 const connectDB = async () => {
   mongoose
     .connect(db, {
-   useNewUrlParser: true,
+      useNewUrlParser: true,
       useCreateIndex: true,
-      useFindAndModify: true,
+      useFindAndModify: false, //true
       useUnifiedTopology: true,
     })
     .then((response) => {
@@ -14,8 +14,8 @@ const connectDB = async () => {
     })
     .catch((err) => {
       console.log(err);
-      process.exit(1)
+      process.exit(1);
     });
 };
-// console.log(mongoose.connection.dropDatabase('pharmaconn'))
+// console.log(mongoose.connection.dropDatabase("pharmaconn"));
 module.exports = connectDB;
