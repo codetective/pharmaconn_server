@@ -11,7 +11,7 @@ router.get("/spaces", (req, res) => {
       if (docs.length === 0) {
         res.json({
           success: "no spaces found",
-          spaces: [],
+          spaces: docs,
         });
       } else {
         res.json({
@@ -44,7 +44,7 @@ router.get("/spaces/single", (req, res) => {
       } else {
         res.json({
           success: "space found",
-          data: doc,
+          space: doc,
         });
       }
     })
@@ -63,11 +63,12 @@ router.get("/spaces/forme", auth, (req, res) => {
       if (docs.length === 0) {
         res.json({
           success: "no spaces found",
+          spaces: docs,
         });
       } else {
         res.json({
           success: "spaces found",
-          data: docs,
+          spaces: docs,
         });
       }
     })
@@ -81,7 +82,7 @@ router.get("/spaces/forme", auth, (req, res) => {
 router.post("/spaces", auth, (req, res) => {
   Spaces.findOne(
     {
-      title: req.body.title.toLowerCase(),
+      title: req.body.title,
     },
     (err, doc) => {
       if (doc) {
@@ -91,7 +92,7 @@ router.post("/spaces", auth, (req, res) => {
         });
       } else {
         const newSpace = new Spaces({
-          title: req.body.title.toLowerCase(),
+          title: req.body.title,
           description: req.body.description,
           user: res.locals.user.id,
           members: [res.locals.user.id],

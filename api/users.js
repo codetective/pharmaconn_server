@@ -66,7 +66,7 @@ router.post("/register", (req, res) => {
                 .then((newVerify) => {
                   console.log(newVerify);
 
-                  const link = `${process.env.CLIENT_URL}/verifyaccount?id=${newVerify.verificationCode}`;
+                  const link = `${process.env.CLIENT_URL}/verifymail?id=${newVerify.verificationCode}`;
 
                   const mailOptions = {
                     from: `Pharmaconnn ${process.env.MAIL_BOX}`, // sender

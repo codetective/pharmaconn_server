@@ -11,11 +11,12 @@ router.get("/topics", auth, (req, res) => {
       if (docs.length === 0) {
         res.json({
           success: "no Topics found",
+          topics: docs,
         });
       } else {
         res.json({
           success: "Topics found",
-          data: docs,
+          topics: docs,
         });
       }
     })
